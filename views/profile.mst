@@ -1,0 +1,35 @@
+{{> header}}
+
+<h1>Meu Perfil</h1>
+
+<form method="post">
+    <div class="input-group">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" value="{{name}}">
+    </div>
+    <div class="input-group">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" value="{{email}}">
+    </div>
+    <div class="input-group">
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+
+<hr>
+
+<form method="post" action="/profile/password">
+    <div class="input-group">
+        <label for="password">Nova Senha:</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div class="input-group">
+        <label for="password-confirm">Confirmar Nova Senha:</label>
+        <input type="password" name="password-confirm" id="password-confirm">
+    </div>
+    <div class="input-group">
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+
+{{> footer}}

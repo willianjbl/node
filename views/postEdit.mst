@@ -1,0 +1,28 @@
+{{> header}}
+
+<h2>Editar Post</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="input-group">
+        <label for="photo">Imagem:</label>
+        <input type="file" name="photo" id="photo">
+        {{# post.photo}}
+            <img src="/media/{{post.photo}}" alt="photo" width="200">
+        {{/ post.photo}}
+    </div>
+    <div class="input-group">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" value="{{post.title}}">
+    </div>
+    <div class="input-group">
+        <label for="body">Corpo:</label>
+        <textarea name="body" id="body">{{post.body}}</textarea>
+    </div>
+    <div class="input-group">
+        <label for="tags">Tags:</label>
+        <input type="text" name="tags" id="tags" value="{{post.tags}}">
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+
+{{> footer}}

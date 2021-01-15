@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {{# titulo}}
+            {{titulo}}
+        {{/ titulo}}
+        {{^ titulo}}
+            {{h.defaultPageTitle}}
+        {{/ titulo}}
+    </title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/template.min.css">
+</head>
+<body>    
+    <nav>
+        <ul>
+            {{# h.menu}}
+                <li><a href="{{slug}}">{{description}}</a></li>
+            {{/ h.menu}}
+        </ul>
+    </nav>
+
+    {{# flash}}
+        {{# success}}
+            <div class="warning">{{.}}</div>
+        {{/ success}}
+        {{# error}}
+            <div class="warning">{{.}}</div>
+        {{/ error}}
+        {{# info}}
+            <div class="warning">{{.}}</div>
+        {{/ info}}
+    {{/ flash}}
+    
