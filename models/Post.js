@@ -16,7 +16,10 @@ const postSchema = new mongoose.Schema({
         trim: true
     },
     tags: [String],
-    author: mongoose.Schema.Types.ObjectId
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 postSchema.pre('save', async function(next) {
@@ -43,25 +46,27 @@ postSchema.statics.getTagList = function() {
 };
 
 postSchema.statics.findPosts = function(filter = {}) {
-    return this.aggregate([
-        {$match: filter},
-        {$lookup: {
-            from: 'users',
-            let: {'author': '$author'},
-            pipeline: [
-                {$match: {
-                    $expr: {
-                        $eq: ['$$author', '$_id']}
-                    }
-                },
-                {$limit: 1}
-            ],
-            as: 'author'
-        }},
-        {$addFields: {
-            'author': {$arrayElemAt: ['$author', 0]}
-        }}
-    ]);
+    return this.find(filter).populate('author');
+
+    // return this.aggregate([
+    //     {$match: filter},
+    //     {$lookup: {
+    //         from: 'users',
+    //         let: {'author': '$author'},
+    //         pipeline: [
+    //             {$match: {
+    //                 $expr: {
+    //                     $eq: ['$$author', '$_id']}
+    //                 }
+    //             },
+    //             {$limit: 1}
+    //         ],
+    //         as: 'author'
+    //     }},
+    //     {$addFields: {
+    //         'author': {$arrayElemAt: ['$author', 0]}
+    //     }}
+    // ]);
 };
 
 const Post = mongoose.model('Post', postSchema);
