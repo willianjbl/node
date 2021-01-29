@@ -15,5 +15,6 @@
         <button type="submit">Entrar</button>
     </div>
 </form>
+<a href="/users/forget">Esqueci minha senha</a>
 
 {{> footer}}

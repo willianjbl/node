@@ -1,0 +1,15 @@
+{{> header}}
+
+<h1>Esqueci minha senha</h1>
+
+<form method="post">
+    <div class="input-group">
+        <label for="email">Login:</label>
+        <input type="email" name="email" id="email">
+    </div>
+    <div class="input-group">
+        <button type="submit">Redefinir Senha</button>
+    </div>
+</form>
+
+{{> footer}}
